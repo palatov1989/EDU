@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="weather_img_url">http://openweathermap.org/img/w/</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
