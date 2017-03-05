@@ -1,30 +1,47 @@
 package com.test.weather;
 
+import android.view.View;
+import java.util.ArrayList;
 
-import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+/**
+ * Created by virus on 05.03.2017.
+ */
 
 public class ViewBinder {
+    View activity;
+    private City city;
+    private ArrayList<List> list;
+    public ViewBinder(String json){
 
-
-    ViewBinder(String Json){
-    try {
-        JSONObject dataJsonObj = new JSONObject(Json);
-        JSONArray friends = dataJsonObj.getJSONArray("friends");
-        JSONObject secondFriend = friends.getJSONObject(1);
-
-        for (int i = 0; i < friends.length(); i++) {
-            JSONObject friend = friends.getJSONObject(i);
-            JSONObject contacts = friend.getJSONObject("contacts");
-        }
-
-    } catch (JSONException e) {
-        e.printStackTrace();
+        list = new ArrayList<List>();
+        city = new City();
     }
-}
+
+    public void bind(View v){
+        activity = v;
 
 
+
+    }
+
+
+
+
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public ArrayList<List> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<List> list) {
+        this.list = list;
+    }
 }

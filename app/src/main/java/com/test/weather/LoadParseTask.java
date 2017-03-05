@@ -1,6 +1,9 @@
 package com.test.weather;
 import android.os.AsyncTask;
-
+import android.view.View;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,21 +11,26 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class DownLoadXMLTask extends AsyncTask<String, Void, String> {
-    @Override
-    protected String doInBackground(String... path) {
+public class LoadParseTask extends AsyncTask<String, Void, View> {
+    ViewBinder binder;
+    View activity;
 
+    public LoadParseTask(View v) {
+        this.activity = v;
+    }
+
+    @Override
+    protected View doInBackground(String... str) {
         String content;
         try{
-            content = getContent(path[0]);
+            content = getContent(str[0]);
         }
         catch (IOException ex){
             content = ex.getMessage();
         }
-
-        return content;
+        binder = new ViewBinder(content);
+        return (activity);
     }
-
 
     private String getContent(String path) throws IOException {
         BufferedReader reader=null;
@@ -46,4 +54,9 @@ public class DownLoadXMLTask extends AsyncTask<String, Void, String> {
             }
         }
     }
+    protected void onPostExecute(View result) {
+    binder.bind(activity);
+    }
+
+
 }
