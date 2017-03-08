@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import java.util.Date;
 
 public class ViewBinder {
-    private Date date;
     private City city;
     static private int[] drawID = { R.drawable.w0, R.drawable.w1, R.drawable.w2,
                                     R.drawable.w3, R.drawable.w5, R.drawable.w6,
@@ -66,13 +65,12 @@ public class ViewBinder {
     //set content view attr here
     View activity    = atrr.getContent();
     Date date        = atrr.getDate();
-        int i=0;
-            while (i < city.getList().size() && date.compareTo(city.getList().get(i).getDate()) <= 0)
-            {
-                i++;
-            }
-            if (i >= city.getList().size()) i--;
-
+        int i;
+        int k =city.getList().size()-1;
+        for (i=0; i<k; i++){
+            if(date.before(city.getList().get(i).getDate()))
+            {break;}
+        }
             List_element forecast = city.getList().get(i);
 
         TextView t = (TextView) activity.findViewById(R.id.city);
@@ -93,7 +91,6 @@ public class ViewBinder {
         t.setText("ASL pressure: "+forecast.getMain().getAsl_pressure()+"");
         t = (TextView) activity.findViewById(R.id.gnd_pressure);
         t.setText("Ground pressure: "+forecast.getMain().getGnd_pressure());
-
 
         t = (TextView) activity.findViewById(R.id.Wind);
         t.setText(forecast.getWind().getSpeed()+" m/s");
