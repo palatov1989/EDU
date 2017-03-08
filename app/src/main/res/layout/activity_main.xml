@@ -37,20 +37,14 @@
                     android:layout_marginEnd="17dp"
                     android:layout_height="match_parent"
                     android:layout_width="220dp" />
+
                 <RelativeLayout
                     android:id="@+id/icons_layout"
                     android:layout_gravity="center"
                     android:orientation="horizontal"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent">
-                    <com.test.weather.CircleImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/d01"
-                        android:layout_marginTop="33dp"
-                        android:id="@+id/temp_img"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true" />
+
                     <com.test.weather.CircleImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
@@ -60,7 +54,6 @@
                         android:layout_below="@+id/temp_img"
                         android:layout_alignStart="@+id/temp_img" />
                     <com.test.weather.CircleImageView
-                        android:rotation="123"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:src="@drawable/d04"
@@ -68,15 +61,7 @@
                         android:layout_marginTop="19dp"
                         android:layout_below="@+id/wind_img"
                         android:layout_alignStart="@+id/wind_img" />
-                    <TextView
-                        android:textColor="@color/colorAccent"
-                        android:text="Temper"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Temper"
-                        android:layout_marginStart="58dp"
-                        android:layout_alignTop="@+id/temp_img"
-                        android:layout_toEndOf="@+id/temp_img" />
+
                     <TextView
                         android:textColor="@color/colorAccent"
                         android:text="Wind"
@@ -95,6 +80,26 @@
                         android:layout_gravity="bottom"
                         android:layout_alignTop="@+id/wind_dir"
                         android:layout_alignStart="@+id/Temper" />
+
+                    <com.test.weather.CircleImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/d01"
+                        android:layout_marginTop="45dp"
+                        android:id="@+id/temp_img"
+                        android:layout_marginEnd="12dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@+id/Wind" />
+
+                    <TextView
+                        android:textColor="@color/colorAccent"
+                        android:text="Temper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Temper"
+                        android:layout_marginEnd="49dp"
+                        android:layout_alignTop="@+id/temp_img"
+                        android:layout_alignParentEnd="true" />
 
                 </RelativeLayout>
             </FrameLayout>
@@ -132,7 +137,7 @@
                     android:text="Weather"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/textView5"
+                    android:id="@+id/description"
                     android:layout_weight="0.52"
                     android:gravity="center" />
             </LinearLayout>
@@ -183,6 +188,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/gnd_pressure" />
+
+                <TextView
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorAccent"
+                    android:text="date_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dt_txt" />
+
+                <SeekBar
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBar"
+
+                    />
             </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>

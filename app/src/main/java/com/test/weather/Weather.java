@@ -7,6 +7,10 @@ package com.test.weather;
 public class Weather {
     private String description="";
     private String icon="";
+    private String ID;
+
+
+
     public void Weather(){}
 
     public String getDescription() {
@@ -23,5 +27,13 @@ public class Weather {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getID() {
+        return ID;
     }
 }

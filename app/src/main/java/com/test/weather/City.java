@@ -7,10 +7,12 @@ import java.util.ArrayList;
  */
 
 public class City {
-    private String name="";
+    private String name;
     private ArrayList<List_element> list;
 
-    public City(){list = new ArrayList<List_element>();}
+    public City(){
+        name ="";
+        list = new ArrayList<List_element>(15);}
 
     public String getName() {
         return name;
