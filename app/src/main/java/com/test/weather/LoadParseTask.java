@@ -1,6 +1,8 @@
 package com.test.weather;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.TextView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,24 +16,19 @@ import java.net.URL;
 public class LoadParseTask extends AsyncTask<String, Void, View> {
     ViewBinder binder;
     View activity;
-
+    String content;
     public LoadParseTask(View v) {
-        this.activity = v;
-    }
-
+        this.activity = v;    }
     @Override
     protected View doInBackground(String... str) {
-        String content;
+        //String content;
         try{
-            content = getContent(str[0]);
-        }
+            content = getContent(str[0]);}
         catch (IOException ex){
-            content = ex.getMessage();
-        }
-        binder = new ViewBinder(content);
+            content = ex.getMessage();}
+        if (content !=null) binder = new ViewBinder(content);
         return (activity);
     }
-
     private String getContent(String path) throws IOException {
         BufferedReader reader=null;
         try {
@@ -44,19 +41,14 @@ public class LoadParseTask extends AsyncTask<String, Void, View> {
             StringBuilder buf=new StringBuilder();
             String line=null;
             while ((line=reader.readLine()) != null) {
-                buf.append(line + "\n");
-            }
-            return(buf.toString());
-        }
-        finally {
-            if (reader != null) {
-                reader.close();
-            }
+                buf.append(line + "\n");}
+            return(buf.toString());}
+        finally {if (reader != null) {reader.close();}
         }
     }
-    protected void onPostExecute(View result) {
-    binder.bind(activity);
+    protected void onPostExecute(View result){
+    //    binder.bind(activity);
+        TextView t = (TextView) activity.findViewById(R.id.city);
+        t.setText(content);
     }
-
-
 }

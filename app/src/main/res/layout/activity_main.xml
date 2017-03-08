@@ -138,6 +138,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="54dp"
+                android:layout_marginLeft="24dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -151,28 +153,36 @@
                     android:id="@+id/city" />
 
                 <TextView
-                    android:text="TextView"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorAccent"
+                    android:text="temp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView4" />
+                    android:id="@+id/temp" />
 
                 <TextView
-                    android:text="TextView"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorAccent"
+                    android:text="humidity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/humidity" />
 
                 <TextView
-                    android:text="TextView"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorAccent"
+                    android:text="asl_pressure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView2" />
+                    android:id="@+id/asl_pressure" />
 
                 <TextView
-                    android:text="TextView"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorAccent"
+                    android:text="gnd_pressure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView" />
+                    android:id="@+id/gnd_pressure" />
             </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
