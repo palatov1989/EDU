@@ -33,16 +33,8 @@ public class List_element {
         return wind;
     }
 
-    public void setWind(Wind wind) {
-        this.wind = wind;
-    }
-
     public Main getMain() {
         return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
     }
 
     public String getDt_txt() {
@@ -57,9 +49,6 @@ public class List_element {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }
 
 

@@ -149,16 +149,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <EditText
+                    android:maxLines="1"
+                    android:imeOptions="actionSend"
                     android:text="city"
                     android:textSize="36dp"
+                    android:ems="10"
                     android:textColor="#BABABA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/city" />
+                    android:id="@+id/city"
+                    android:layout_marginLeft="8dp" />
 
                 <TextView
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/colorAccent"
                     android:text="temp"
                     android:layout_width="match_parent"
@@ -166,7 +170,7 @@
                     android:id="@+id/temp" />
 
                 <TextView
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/colorAccent"
                     android:text="humidity"
                     android:layout_width="match_parent"
@@ -174,7 +178,7 @@
                     android:id="@+id/humidity" />
 
                 <TextView
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/colorAccent"
                     android:text="asl_pressure"
                     android:layout_width="match_parent"
@@ -182,7 +186,7 @@
                     android:id="@+id/asl_pressure" />
 
                 <TextView
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/colorAccent"
                     android:text="gnd_pressure"
                     android:layout_width="match_parent"
@@ -190,7 +194,7 @@
                     android:id="@+id/gnd_pressure" />
 
                 <TextView
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/colorAccent"
                     android:text="date_text"
                     android:layout_width="match_parent"
@@ -199,7 +203,7 @@
 
                 <SeekBar
                     android:max="100"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="26dp"
                     android:textColor="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

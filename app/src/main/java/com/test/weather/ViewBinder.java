@@ -1,6 +1,6 @@
 package com.test.weather;
 
-import android.view.View;
+import android.app.Activity;
 import android.widget.ImageView;
 import android.widget.TextView;
 import org.json.JSONArray;
@@ -10,16 +10,26 @@ import org.json.JSONObject;
 import java.util.Date;
 
 public class ViewBinder {
+
     private City city;
     static private int[] drawID = { R.drawable.w0, R.drawable.w1, R.drawable.w2,
                                     R.drawable.w3, R.drawable.w5, R.drawable.w6,
                                     R.drawable.w7, R.drawable.w9};
 
-    public ViewBinder() {city = new City();}
+    public ViewBinder() {}
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     public void parse(String json){
+        city = new City();
         //parser here
         try {
-
             JSONObject obj, list_element;
             JSONArray  weather;
             JSONObject js = new JSONObject(json);
@@ -63,27 +73,24 @@ public class ViewBinder {
 
     public void bind(Task_attr atrr){
     //set content view attr here
-    View activity    = atrr.getContent();
-    Date date        = atrr.getDate();
-        int i;
-        int k =city.getList().size()-1;
-        for (i=0; i<k; i++){
-            if(date.before(city.getList().get(i).getDate()))
-            {break;}
-        }
+    Activity    activity       = atrr.getContent();
+    Date        date           = atrr.getDate();
+        int i=0;
+        int k =city.getList().size();
+        while ((i<k)&&(date.before(city.getList().get(i).getDate())))
+        {i++;}
+        if (i>=k) return;
             List_element forecast = city.getList().get(i);
 
-        TextView t = (TextView) activity.findViewById(R.id.city);
-        t.setText(city.getName());
-        t = (TextView) activity.findViewById(R.id.dt_txt);
+        TextView t = (TextView) activity.findViewById(R.id.dt_txt);
         t.setText(forecast.getDt_txt());
 
         t = (TextView) activity.findViewById(R.id.temp);
-        float min = Math.round(Float.parseFloat(forecast.getMain().getTemp_min()))-273;
-        float max = Math.round(Float.parseFloat(forecast.getMain().getTemp_max()))-273;
-        t.setText("Temperature: "+Float.toString(min)+".."+Float.toString(max));
+        int min = Math.round(Float.parseFloat(forecast.getMain().getTemp_min())-273);
+        int max = Math.round(Float.parseFloat(forecast.getMain().getTemp_max())-273);
+        t.setText("Temperature: "+Integer.toString(min)+".."+Integer.toString(max));
         t = (TextView) activity.findViewById(R.id.Temper);
-        t.setText(Float.toString(min)+".."+Float.toString(max));
+        t.setText(Integer.toString(min)+".."+Integer.toString(max));
 
         t = (TextView) activity.findViewById(R.id.humidity);
         t.setText("Humidity: "+forecast.getMain().getHumidity() + "%");
@@ -103,7 +110,7 @@ public class ViewBinder {
         url += forecast.getWeather().getIcon() + ".png";
         new DownloadImageTask((ImageView) activity.findViewById(R.id.weather_img)).execute(url);
         t = (TextView) activity.findViewById(R.id.description);
-        t.setText(forecast.getWeather().getDescription());
+        t.setText("Now here - "+forecast.getWeather().getDescription());
 
         ImageView weather_logo = (ImageView) activity.findViewById(R.id.weather_logo);
         int j = Integer.parseInt(forecast.getWeather().getID());

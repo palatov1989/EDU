@@ -1,7 +1,6 @@
 package com.test.weather;
 
-import android.view.View;
-
+import android.app.Activity;
 import java.util.Date;
 
 /**
@@ -11,16 +10,13 @@ import java.util.Date;
 public class Task_attr{
     private ViewBinder binder;
     private Date date;
-    private View content;
-    public  Task_attr(Date d, View v, ViewBinder b){
+    private Activity content;
+    public  Task_attr(Activity v, Date d, ViewBinder b){
         date=d; content=v; binder=b;
     }
 
     public ViewBinder getBinder() {
         return binder;
-    }
-    public void setBinder(ViewBinder binder) {
-        this.binder = binder;
     }
     public Date getDate() {
         return date;
@@ -28,10 +24,7 @@ public class Task_attr{
     public void setDate(Date date) {
         this.date = date;
     }
-    public View getContent() {
+    public Activity getContent() {
         return content;
-    }
-    public void setContent(View content) {
-        this.content = content;
     }
 }

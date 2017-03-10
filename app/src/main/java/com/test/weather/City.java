@@ -12,7 +12,7 @@ public class City {
 
     public City(){
         name ="";
-        list = new ArrayList<List_element>(15);}
+        list = new ArrayList<>();}
 
     public String getName() {
         return name;
@@ -20,10 +20,6 @@ public class City {
 
     public ArrayList<List_element> getList() {
         return list;
-    }
-
-    public void setList(ArrayList<List_element> list) {
-        this.list = list;
     }
 
     public void setName(String name) {

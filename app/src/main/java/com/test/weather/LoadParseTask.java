@@ -1,5 +1,7 @@
 package com.test.weather;
 import android.os.AsyncTask;
+import android.provider.Settings;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +10,7 @@ import java.net.URL;
 
 
 public class LoadParseTask extends AsyncTask<String, Void, Task_attr> {
-    Task_attr attr;
+    private Task_attr attr;
 
     public LoadParseTask(Task_attr t) {
         this.attr = t;
