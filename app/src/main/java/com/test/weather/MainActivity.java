@@ -10,7 +10,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity
                 BASE_URL = getString(R.string.base_url);
                 BASE_URL += str + getString(R.string.api_url);
                 new LoadParseTask(attr).execute(BASE_URL);
+                return true;
             }
         }
         return false;

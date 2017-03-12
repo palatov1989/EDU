@@ -107,7 +107,7 @@ public class ViewBinder {
         t = (TextView) activity.findViewById(R.id.Wind_dir);
         t.setText(Float.toString(forecast.getWind().getDirection()).substring(0,2)+"'");
         CircleImageView wDir = (CircleImageView) activity.findViewById(R.id.wind_dir);
-        wDir.setRotation(-forecast.getWind().getDirection());
+        wDir.setRotation(180+forecast.getWind().getDirection());
 
         String url = new String("http://openweathermap.org/img/w/");
         url += forecast.getWeather().getIcon() + ".png";
