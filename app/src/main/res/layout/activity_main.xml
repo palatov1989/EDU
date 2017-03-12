@@ -143,73 +143,111 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@color/colorPrimaryDark"
                 android:layout_marginTop="54dp"
                 android:layout_marginLeft="24dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:maxLines="1"
-                    android:imeOptions="actionSend"
-                    android:text="city"
-                    android:textSize="36dp"
-                    android:ems="10"
-                    android:textColor="#BABABA"
+                <android.support.v7.widget.CardView
+                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/city"
-                    android:layout_marginLeft="8dp" />
+                    android:layout_marginRight="22dp"
+                    android:elevation="15dp"
+                    app:cardBackgroundColor="#BABABA">
 
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/colorAccent"
-                    android:text="temp"
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:elevation="0dp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:imeOptions="actionDone"
+                            android:imeActionId="@+id/action_done"
+                            android:maxLines="1"
+                            android:text="city"
+                            android:textColor="#FFFFFF"
+                            android:background="@android:color/transparent"
+                            android:textSize="36dp" />
+
+                        <TextView
+                            android:id="@+id/temp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:text="temp"
+                            android:textColor="@color/colorAccent" />
+
+                        <TextView
+                            android:id="@+id/humidity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:text="humidity"
+                            android:textColor="@color/colorAccent" />
+
+                        <TextView
+                            android:id="@+id/gnd_pressure"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:text="gnd_pressure"
+                            android:textColor="@color/colorAccent" />
+
+                        <TextView
+                            android:id="@+id/asl_pressure"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:text="asl_pressure"
+                            android:textColor="@color/colorAccent" />
+
+                        <TextView
+                            android:id="@+id/dt_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:text="date_text"
+                            android:textColor="@color/colorAccent" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="26dp"
+                            android:layout_weight="1"
+                            android:max="100"
+
+                            android:textColor="@color/colorAccent" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/temp" />
+                    android:layout_height="match_parent" />
 
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/colorAccent"
-                    android:text="humidity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/humidity" />
 
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/colorAccent"
-                    android:text="asl_pressure"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/asl_pressure" />
-
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/colorAccent"
-                    android:text="gnd_pressure"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/gnd_pressure" />
-
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/colorAccent"
-                    android:text="date_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/dt_txt" />
-
-                <SeekBar
-                    android:max="100"
-                    android:layout_marginTop="26dp"
-                    android:textColor="@color/colorAccent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/seekBar"
-
-                    />
             </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>

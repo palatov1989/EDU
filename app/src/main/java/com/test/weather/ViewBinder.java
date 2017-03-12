@@ -85,6 +85,9 @@ public class ViewBinder {
         TextView t = (TextView) activity.findViewById(R.id.dt_txt);
         t.setText(forecast.getDt_txt());
 
+        t = (TextView) activity.findViewById(R.id.city);
+        t.setText(city.getName());
+
         t = (TextView) activity.findViewById(R.id.temp);
         int min = Math.round(Float.parseFloat(forecast.getMain().getTemp_min())-273);
         int max = Math.round(Float.parseFloat(forecast.getMain().getTemp_max())-273);
