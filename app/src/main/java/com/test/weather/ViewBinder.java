@@ -7,27 +7,32 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ViewBinder {
 
     private City city;
+    private ArrayList<week_cast_element> forecast_arr;
+    public  ArrayList<week_cast_element> getForecast_arr() {
+        return forecast_arr;
+    }
+
     static private int[] drawID = { R.drawable.w0, R.drawable.w1, R.drawable.w2,
                                     R.drawable.w3, R.drawable.w5, R.drawable.w6,
                                     R.drawable.w7, R.drawable.w9};
 
-    public ViewBinder() {}
+    public ViewBinder(ArrayList<week_cast_element> arr) {this.forecast_arr = arr;}
 
     public City getCity() {
         return city;
     }
 
-    public void setCity(City city) {
-        this.city = city;
-    }
-
     public void parse(String json){
         city = new City();
+        String img_url = new String("http://openweathermap.org/img/w/");
+        String icon;
         //parser here
         try {
             JSONObject obj, list_element;
@@ -40,6 +45,7 @@ public class ViewBinder {
             JSONArray arr = js.getJSONArray("list");
 
             for (int i=0; i<arr.length(); i++) {
+
                 List_element mlist_element = new List_element();
                 list_element = arr.getJSONObject(i);
 
@@ -56,14 +62,23 @@ public class ViewBinder {
                 weather = list_element.getJSONArray("weather");
                 obj = weather.getJSONObject(0);
                 mlist_element.getWeather().setDescription(obj.getString("description"));
-                mlist_element.getWeather().setIcon(obj.getString("icon"));
                 mlist_element.getWeather().setID(obj.getString("id"));
 
+                icon = obj.getString("icon");
+                mlist_element.getWeather().setIcon(icon);
+                week_cast_element mItem = new week_cast_element();
+/*
+                try {
+                    new DownloadImageTask(mItem.getImg()).execute(img_url+icon+".png");
+                    TimeUnit.MILLISECONDS.sleep(5);
+                } catch (Exception e) {e.printStackTrace();}
+*/
                 obj = list_element.getJSONObject("wind");
                 mlist_element.getWind().setSpeed(obj.getString("speed"));
                 mlist_element.getWind().setDirection((float) obj.getDouble("deg"));
 
                 city.getList().add(mlist_element);
+                forecast_arr.add(mItem);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -71,10 +86,10 @@ public class ViewBinder {
     }
 
 
-    public void bind(Task_attr atrr){
+    public void bind(Task_attr attr){
     //set content view attr here
-    Activity    activity       = atrr.getContent();
-    Date        date           = atrr.getDate();
+    Activity    activity       = attr.getContent();
+    Date        date           = attr.getDate();
         int i=0;
         int k =city.getList().size();
         while ((i<k)&&(date.before(city.getList().get(i).getDate())))
@@ -131,6 +146,22 @@ public class ViewBinder {
                     if (j-800==0) {weather_logo.setImageResource(drawID[0]);}
                 }
             }
+        }
+        Main weather;
+        week_cast_element mItem;
+        while (i<k) {
+            mItem = forecast_arr.get(i);
+            String str = city.getList().get(i).getDt_txt();
+
+            str.substring(5,11);
+            mItem.setDate(str);
+            weather = city.getList().get(i).getMain();
+
+            int minT = Math.round(Float.parseFloat(weather.getTemp_min())-273);
+            int maxT = Math.round(Float.parseFloat(weather.getTemp_max())-273);
+            str = ("  "+Integer.toString(minT)+".."+Integer.toString(maxT));
+            mItem.setText(str);
+            i++;
         }
     }
 }

@@ -10,14 +10,16 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import java.util.ArrayList;
 import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity
                             implements SeekBar.OnSeekBarChangeListener,
-                                            TextView.OnEditorActionListener
-{
-    private Task_attr   attr;
-    private String      BASE_URL;
+                                            TextView.OnEditorActionListener {
+    private Task_attr attr;
+    private String BASE_URL;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity
         BASE_URL = getString(R.string.base_url);
         BASE_URL += "Sevastopol&" + getString(R.string.api_url);
 
-        attr = new Task_attr(this, new Date(), new ViewBinder());
+        attr = new Task_attr(this, new Date(), new ViewBinder(new ArrayList<week_cast_element>()));
         new LoadParseTask(attr).execute(BASE_URL);
 
         EditText t = (EditText) findViewById(R.id.city);
@@ -39,8 +41,8 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        //RecyclerAdapter mAdapter = new RecyclerAdapter(myDataset);
-        //mRecyclerView.setAdapter(mAdapter);
+        RecyclerAdapter mAdapter = new RecyclerAdapter(attr.getBinder().getForecast_arr());
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        long Bar = 5 * 24 * 60 * 60 * 1000 * seekBar.getProgress() / 100;
+        long Bar = 5 * 24 * 60 * 60 * 1000 / 100 * seekBar.getProgress();
         attr.getDate().setTime(Bar + attr.getDate().getTime());
         attr.getBinder().bind(attr);
         }
@@ -75,4 +77,5 @@ public class MainActivity extends AppCompatActivity
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) {
         }
+
 }

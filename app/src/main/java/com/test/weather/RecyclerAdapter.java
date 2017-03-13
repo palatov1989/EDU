@@ -7,29 +7,33 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
     public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-        private ArrayList<String> mDataset;
+        private ArrayList<week_cast_element> array;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            public TextView mTextView;
+            public TextView cardID;
+            public TextView cardText;
+            public ImageView img;
 
             public ViewHolder(View v) {
                 super(v);
-                mTextView = (TextView) v.findViewById(R.id.tv_recycler_item);
+                cardID = (TextView) v.findViewById(R.id.item_id);
+                cardText = (TextView) v.findViewById(R.id.item_text);
+                img = (ImageView) v.findViewById(R.id.imgview);
             }
         }
 
-        public RecyclerAdapter(ArrayList<String> dataset) {
-            mDataset = dataset;
+        public RecyclerAdapter(ArrayList<week_cast_element> dataset) {
+            array = dataset;
         }
 
         @Override
-        public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                             int viewType) {
+        public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_view, parent, false);
 
@@ -40,12 +44,14 @@ import java.util.ArrayList;
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
 
-            holder.mTextView.setText(mDataset.get(position));
+            holder.cardID.setText(array.get(position).getDate());
+            holder.cardText.setText(array.get(position).getText());
+            holder.img = (array.get(position).getImg());
 
         }
 
         @Override
         public int getItemCount() {
-            return mDataset.size();
+            return array.size();
         }
 }
