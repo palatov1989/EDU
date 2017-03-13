@@ -21,7 +21,8 @@ public class ViewBinder {
 
     static private int[] drawID = { R.drawable.w0, R.drawable.w1, R.drawable.w2,
                                     R.drawable.w3, R.drawable.w5, R.drawable.w6,
-                                    R.drawable.w7, R.drawable.w9};
+//                                    R.drawable.w7, R.drawable.w9
+    };
 
     public ViewBinder(ArrayList<week_cast_element> arr) {this.forecast_arr = arr;}
 
