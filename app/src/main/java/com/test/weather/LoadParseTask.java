@@ -1,6 +1,5 @@
 package com.test.weather;
 import android.os.AsyncTask;
-import android.provider.Settings;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,15 +8,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class LoadParseTask extends AsyncTask<String, Void, Task_attr> {
-    private Task_attr attr;
+public class LoadParseTask extends AsyncTask<String, Void, TaskAttr> {
+    private TaskAttr attr;
 
-    public LoadParseTask(Task_attr t) {
+    public LoadParseTask(TaskAttr t) {
         this.attr = t;
     }
 
     @Override
-    protected Task_attr doInBackground(String... str) {
+    protected TaskAttr doInBackground(String... str) {
         String content;
         try {
             content = getContent(str[0]);
@@ -50,7 +49,7 @@ public class LoadParseTask extends AsyncTask<String, Void, Task_attr> {
         }
     }
 
-    protected void onPostExecute(Task_attr result) {
+    protected void onPostExecute(TaskAttr result) {
         attr.getBinder().bind(attr);
     }
 }

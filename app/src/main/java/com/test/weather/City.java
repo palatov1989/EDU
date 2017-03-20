@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class City {
     private String name;
-    private ArrayList<List_element> list;
+    private ArrayList<ListElement> list;
 
     public City(){
         name ="";
@@ -18,7 +18,7 @@ public class City {
         return name;
     }
 
-    public ArrayList<List_element> getList() {
+    public ArrayList<ListElement> getList() {
         return list;
     }
 

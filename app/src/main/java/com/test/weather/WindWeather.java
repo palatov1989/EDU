@@ -4,7 +4,7 @@ package com.test.weather;
  * Created by virus on 05.03.2017.
  */
 
-public class Wind {
+public class WindWeather {
     private String speed="" ;
     private float  direction;
     public void Wind(){}

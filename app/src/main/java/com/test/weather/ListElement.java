@@ -6,18 +6,18 @@ import java.util.Date;
  * Created by virus on 05.03.2017.
  */
 
-public class List_element {
+public class ListElement {
     private Weather weather;
-    private Wind wind;
-    private Main main;
+    private WindWeather windWeather;
+    private MainWeather mainWeather;
     private String dt_txt;
     private Date date;
 
 
-    public List_element() {
+    public ListElement() {
         weather = new Weather();
-        wind = new Wind();
-        main = new Main();
+        windWeather = new WindWeather();
+        mainWeather = new MainWeather();
         date = new Date();
     }
 
@@ -29,12 +29,12 @@ public class List_element {
         this.weather = weather;
     }
 
-    public Wind getWind() {
-        return wind;
+    public WindWeather getWindWeather() {
+        return windWeather;
     }
 
-    public Main getMain() {
-        return main;
+    public MainWeather getMainWeather() {
+        return mainWeather;
     }
 
     public String getDt_txt() {

@@ -7,12 +7,12 @@ import android.widget.ImageView;
  * Created by virus on 13.03.2017.
  */
 
-public class week_cast_element {
+public class WeekCastElement {
     private String date="";
     private String text="";
     private ImageView img;
 
-    public week_cast_element(){}
+    public WeekCastElement(){}
 
     public String getDate() {
         return date;

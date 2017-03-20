@@ -7,11 +7,11 @@ import java.util.Date;
  * Created by virus on 08.03.2017.
  */
 
-public class Task_attr{
+public class TaskAttr {
     private ViewBinder binder;
     private Date date;
     private Activity content;
-    public  Task_attr(Activity v, Date d, ViewBinder b){
+    public TaskAttr(Activity v, Date d, ViewBinder b){
         date=d; content=v; binder=b;
     }
 

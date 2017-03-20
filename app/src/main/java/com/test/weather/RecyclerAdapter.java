@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
     public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-        private ArrayList<week_cast_element> array;
+        private ArrayList<WeekCastElement> array;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public TextView cardID;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
             }
         }
 
-        public RecyclerAdapter(ArrayList<week_cast_element> dataset) {
+        public RecyclerAdapter(ArrayList<WeekCastElement> dataset) {
             array = dataset;
         }
 

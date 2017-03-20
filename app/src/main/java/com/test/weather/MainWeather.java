@@ -4,7 +4,7 @@ package com.test.weather;
  * Created by virus on 05.03.2017.
  */
 
-public class Main {
+public class MainWeather {
     private   String  temp_min="";
     private   String  temp_max="";
     private    String humidity="";
