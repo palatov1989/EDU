@@ -5,28 +5,28 @@ package com.test.weather;
  */
 
 public class MainWeather {
-    private   String  temp_min="";
-    private   String  temp_max="";
+    private   String tempMin ="";
+    private   String tempMax ="";
     private    String humidity="";
-    private    String asl_pressure="";
-    private    String gnd_pressure="";
+    private    String aslPressure ="";
+    private    String gndPressure ="";
 
     public void Main(){}
 
-    public String getTemp_min() {
-        return temp_min;
+    public String getTempMin() {
+        return tempMin;
     }
 
-    public void setTemp_min(String temp_min) {
-        this.temp_min = temp_min;
+    public void setTempMin(String tempMin) {
+        this.tempMin = tempMin;
     }
 
-    public String getTemp_max() {
-        return temp_max;
+    public String getTempMax() {
+        return tempMax;
     }
 
-    public void setTemp_max(String temp_max) {
-        this.temp_max = temp_max;
+    public void setTempMax(String tempMax) {
+        this.tempMax = tempMax;
     }
 
     public String getHumidity() {
@@ -37,19 +37,19 @@ public class MainWeather {
         this.humidity = humidity;
     }
 
-    public String getAsl_pressure() {
-        return asl_pressure;
+    public String getAslPressure() {
+        return aslPressure;
     }
 
-    public void setAsl_pressure(String asl_pressure) {
-        this.asl_pressure = asl_pressure;
+    public void setAslPressure(String aslPressure) {
+        this.aslPressure = aslPressure;
     }
 
-    public String getGnd_pressure() {
-        return gnd_pressure;
+    public String getGndPressure() {
+        return gndPressure;
     }
 
-    public void setGnd_pressure(String gnd_pressure) {
-        this.gnd_pressure = gnd_pressure;
+    public void setGndPressure(String gndPressure) {
+        this.gndPressure = gndPressure;
     }
 }

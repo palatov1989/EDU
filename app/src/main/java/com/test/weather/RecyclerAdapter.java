@@ -15,23 +15,25 @@ import java.util.ArrayList;
 
         private ArrayList<WeekCastElement> array;
 
+        public void setList(ArrayList<WeekCastElement> list) {
+            array = list;
+            notifyDataSetChanged();
+        }
+
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public TextView cardID;
             public TextView cardText;
-            public ImageView img;
 
             public ViewHolder(View v) {
                 super(v);
-                cardID = (TextView) v.findViewById(R.id.item_id);
-                cardText = (TextView) v.findViewById(R.id.item_text);
-                img = (ImageView) v.findViewById(R.id.imgview);
+                cardID      = (TextView)    v.findViewById(R.id.item_id);
+                cardText    = (TextView)    v.findViewById(R.id.item_text);
             }
         }
 
         public RecyclerAdapter(ArrayList<WeekCastElement> dataset) {
             array = dataset;
         }
-
         @Override
         public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext())
@@ -43,11 +45,8 @@ import java.util.ArrayList;
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-
             holder.cardID.setText(array.get(position).getDate());
             holder.cardText.setText(array.get(position).getText());
-            holder.img = (array.get(position).getImg());
-
         }
 
         @Override

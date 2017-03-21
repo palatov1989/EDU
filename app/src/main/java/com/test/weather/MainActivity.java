@@ -16,8 +16,10 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity
                             implements SeekBar.OnSeekBarChangeListener,
                                             TextView.OnEditorActionListener {
-    private TaskAttr attr;
-    private String BASE_URL;
+    private String baseUrl;
+    private RecyclerAdapter mAdapter;
+    private City city;
+    private ViewBinder binder;
 
 
     @Override
@@ -26,11 +28,19 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         SeekBar s = (SeekBar) findViewById(R.id.seekBar);
         s.setOnSeekBarChangeListener(this);
-        BASE_URL = getString(R.string.base_url);
-        BASE_URL += "Sevastopol&" + getString(R.string.api_url);
+        baseUrl = getString(R.string.base_url);
+        baseUrl += "Sevastopol&" + getString(R.string.api_url);
 
-        attr = new TaskAttr(this, new Date(), new ViewBinder(new ArrayList<WeekCastElement>()));
-        new LoadParseTask(attr).execute(BASE_URL);
+        LoadParseTask asyncTask = new LoadParseTask(city){
+            @Override
+            protected void onPostExecute(City city) {
+                super.onPostExecute(city);
+                mAdapter.setList(binder.getForecast_arr());
+            }
+        };
+        binder = new ViewBinder(this);
+        asyncTask.setBinder(binder);
+        asyncTask.execute(baseUrl);
 
         EditText t = (EditText) findViewById(R.id.city);
         t.setOnEditorActionListener(this);
@@ -39,23 +49,23 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        RecyclerAdapter mAdapter = new RecyclerAdapter(attr.getBinder().getForecast_arr());
+        mAdapter = new RecyclerAdapter(binder.getForecast_arr());
         mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
     public boolean onEditorAction(TextView e, int actionId, KeyEvent keyEvent) {
         if ((e.getId()==R.id.city)&&(actionId == EditorInfo.IME_ACTION_DONE)) {
-            if (attr.getBinder().getCity().getName() != e.toString()) {
+            if (binder.getCity().getName() != e.toString()) {
                 String str = e.getText().toString();
                 if (str != "") {
                     str += "&";
                 } else {
                     str = "Sevastopol,ua&";
                 }
-                BASE_URL = getString(R.string.base_url);
-                BASE_URL += str + getString(R.string.api_url);
-                new LoadParseTask(attr).execute(BASE_URL);
+                baseUrl = getString(R.string.base_url);
+                baseUrl += str + getString(R.string.api_url);
+                new LoadParseTask(city).execute(baseUrl);
 
                 return true;
             }
@@ -67,9 +77,8 @@ public class MainActivity extends AppCompatActivity
     public void onStopTrackingTouch(SeekBar seekBar) {
         long Bar = 5 * 24 * 60 * 60 * 1000 / 100 * seekBar.getProgress();
         Date date = new Date();
-        date.setTime(date.getTime()+Bar);
-        attr.setDate(date);
-        attr.getBinder().bind(attr);
+        binder.setDate(new Date(date.getTime()+Bar));
+        binder.bind(city);
         }
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
