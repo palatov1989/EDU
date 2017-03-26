@@ -13,24 +13,20 @@ import java.net.URL;
 
 
 public class LoadParseTask extends AsyncTask<String, Void, City> {
-    private City city;
     private ViewBinder binder;
 
-    public LoadParseTask(City city) {
-        this.city=city;
-    }
-
+    public LoadParseTask() {}
     public void setBinder(ViewBinder binder) {
         this.binder = binder;
     }
 
-    public void parse(String json){
-        city = new City();
-        String img_url = new String("http://openweathermap.org/img/w/");
+    public City parse(String json){
         String icon;
-        //parser here
+        City city = new City();
         try {
-            JSONObject obj, jsonListElement;
+            JSONObject obj;
+            JSONObject jsonListElement;
+
             JSONArray weather;
             JSONObject js = new JSONObject(json);
 
@@ -71,20 +67,18 @@ public class LoadParseTask extends AsyncTask<String, Void, City> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return(city);
     }
-
-
 
     @Override
     protected City doInBackground(String... str) {
-        String content;
+        String content=null;
         try {
             content = getContent(str[0]);
-        } catch (IOException ex) {
-            content = ex.getMessage();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        if (content != null) this.parse(content);
-        return (city);
+        return(this.parse(content));
     }
 
     private String getContent(String path) throws IOException {
@@ -109,10 +103,8 @@ public class LoadParseTask extends AsyncTask<String, Void, City> {
         }
     }
 
-
-
     @Override
     protected void onPostExecute(City result) {
-        binder.bind(city);
+        binder.bind(result);
     }
 }

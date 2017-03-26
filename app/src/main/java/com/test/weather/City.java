@@ -12,7 +12,7 @@ public class City {
 
     public City(){
         name ="";
-        list = new ArrayList<>();}
+        list = new ArrayList<ListElement>();}
 
     public String getName() {
         return name;

@@ -29,7 +29,7 @@ public class ViewBinder {
 
     private Date date;
     private City city;
-    private ArrayList<WeekCastElement> forecast_arr;
+    private ArrayList<WeekCastElement> forecastArray;
 
     public ViewBinder(Activity activity) {
         date = new Date();
@@ -51,7 +51,6 @@ public class ViewBinder {
     }
 
     public void bind(City city) {
-        //set content view attr here
         this.city=city;
         int i = 0;
         int k = city.getList().size();
@@ -102,8 +101,8 @@ public class ViewBinder {
         WeekCastElement mItem;
         while (i < k) {
             mItem = new WeekCastElement();
-            forecast_arr.add(mItem);
-            mItem = forecast_arr.get(i);
+            forecastArray.add(mItem);
+            mItem = forecastArray.get(i);
             String str = city.getList().get(i).getDt_txt();
 
             str.substring(5, 11);
@@ -126,12 +125,12 @@ public class ViewBinder {
         this.city = city;
     }
 
-    public ArrayList<WeekCastElement> getForecast_arr() {
-        return forecast_arr;
+    public ArrayList<WeekCastElement> getForecastArray() {
+        return forecastArray;
     }
 
-    public void setForecast_arr(ArrayList<WeekCastElement> forecast_arr) {
-        this.forecast_arr = forecast_arr;
+    public void setForecastArray(ArrayList<WeekCastElement> forecastArray) {
+        this.forecastArray = forecastArray;
     }
 
     public Date getDate() {

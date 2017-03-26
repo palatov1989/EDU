@@ -31,9 +31,9 @@ import java.util.ArrayList;
             }
         }
 
-        public RecyclerAdapter(ArrayList<WeekCastElement> dataset) {
-            array = dataset;
-        }
+//        public RecyclerAdapter(ArrayList<WeekCastElement> dataset) {
+//            array = dataset;
+//      }
         @Override
         public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext())
